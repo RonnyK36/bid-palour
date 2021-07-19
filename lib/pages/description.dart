@@ -14,6 +14,5 @@ class Description extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }
