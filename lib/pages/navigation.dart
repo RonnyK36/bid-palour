@@ -57,15 +57,18 @@ class _NavigationState extends State<Navigation> {
         activeColor: Colors.green,
         items: [
           BottomNavigationBarItem(
+            label: 'Home',
             icon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
+            label: 'About',
             icon: Icon(
               Icons.description,
               size: 35,
             ),
           ),
           BottomNavigationBarItem(
+            label: 'Account',
             icon: Icon(Icons.account_circle),
           ),
         ],
