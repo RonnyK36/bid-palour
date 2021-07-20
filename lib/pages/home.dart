@@ -1,4 +1,3 @@
-import 'package:bid_palour/config/config.dart';
 import 'package:bid_palour/widgets/app_bar.dart';
 import 'package:bid_palour/widgets/button.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +12,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: header(context, titleText: 'Bid Palour'),
+      appBar: header(context, titleText: 'Bid Parlour'),
       body: ListView(
         children: [
           Column(
