@@ -14,7 +14,41 @@ class _AccountState extends State<Account> {
       body: ListView(
         children: [
           Column(
-            children: [Text('Account page')],
+            children: [
+              Text('Account page'),
+              Container(
+                height: 100,
+                width: 100,
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('images/alien_circle.jpg'),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 200,
+                width: MediaQuery.of(context).size.width * 0.7,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Account balance :'),
+                        Text('100.00'),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Withdrawable balance :'),
+                        Text('100.00'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
       ),

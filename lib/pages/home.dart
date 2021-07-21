@@ -20,15 +20,13 @@ class _HomeState extends State<Home> {
               Text('Home page'),
             ],
           ),
-          Card(
-            color: Colors.white,
-            elevation: 5,
-            child: Container(
-              height: 200,
-              width: 200,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('images/hundred.jpeg'))),
+          Container(
+            height: 150,
+            width: 150,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('images/hundred.jpeg'),
+              ),
             ),
           ),
           SizedBox(
