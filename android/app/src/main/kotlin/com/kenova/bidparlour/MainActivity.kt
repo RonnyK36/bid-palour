@@ -1,4 +1,4 @@
-package com.example.bid_palour
+package com.kenova.bidparlour
 
 import io.flutter.embedding.android.FlutterActivity
 
