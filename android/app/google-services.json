@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "43230897936",
+    "project_id": "bid-parlour",
+    "storage_bucket": "bid-parlour.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43230897936:android:a8630e093dd488a8f3e795",
+        "android_client_info": {
+          "package_name": "com.kenova.bidparlour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43230897936-eu59qulmpdtvrmr5j28du3mprradhdcl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kenova.bidparlour",
+            "certificate_hash": "166ae4fec4db676e10bfe758df380e959abd89f3"
+          }
+        },
+        {
+          "client_id": "43230897936-up0q5qse0g5a07lqec3msbqak63cq4m0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcXojNB8GgXIkvbd_w2zDZ8_Bvyg_Yb2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43230897936-up0q5qse0g5a07lqec3msbqak63cq4m0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
