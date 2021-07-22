@@ -58,6 +58,7 @@ class _AccountState extends State<Account> {
               SizedBox(height: 10),
               Container(
                 height: 185,
+                color: Colors.green,
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: Column(
                   children: [
@@ -86,9 +87,17 @@ class _AccountState extends State<Account> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        textButton(label: 'Withdraw cash', onPressed: () {}),
+                        textButton(
+                            label: 'Withdraw cash',
+                            onPressed: () {
+                              print('Withdrawing');
+                            }),
                         SizedBox(width: 35),
-                        textButton(label: 'Deposit funds', onPressed: () {}),
+                        textButton(
+                            label: 'Deposit funds',
+                            onPressed: () {
+                              print('Depositing');
+                            }),
                       ],
                     ),
                   ],

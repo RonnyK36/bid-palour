@@ -31,6 +31,7 @@ dependencies:
   firebase_core:
   cloud_firestore:
   lit_firebase_auth: ^0.3.0
+  carousel_slider: ^4.0.0
 
 
 dev_dependencies:
