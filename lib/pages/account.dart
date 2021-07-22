@@ -16,90 +16,87 @@ class _AccountState extends State<Account> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: header(context, titleText: 'Profile'),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            height: 100,
-            width: 100,
-            child: CircleAvatar(
-              backgroundImage: AssetImage('images/alien_circle.jpg'),
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            height: 200,
-            width: MediaQuery.of(context).size.width * 0.8,
-            child: Column(
-              children: [
-                accountCard(
-                  title: 'Kelvin Rono',
-                  subtitle: 'Username',
-                  iconData: Icons.person,
+      body: Center(
+        child: Container(
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                height: 100,
+                width: 100,
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('images/alien_circle.jpg'),
                 ),
-                accountCard(
-                  title: 'ronnykelvyne3@gmail.com',
-                  subtitle: 'Email',
-                  iconData: Icons.email,
-                ),
-                accountCard(
-                  title: '0727447786',
-                  subtitle: 'Phone',
-                  iconData: Icons.phone,
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 10),
-          Container(
-            height: 250,
-            width: MediaQuery.of(context).size.width * 0.8,
-            child: Column(
-              children: [
-                accountRow(
-                  title: 'Account balance :',
-                  value: '100.00',
-                  isCredit: true,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                accountRow(
-                  title: 'Withdrawable :',
-                  value: '90.00',
-                  isCredit: false,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                accountRow(
-                  title: 'Running bids :',
-                  value: '5',
-                  isCredit: true,
-                ),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              ),
+              Container(
+                height: 200,
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: Column(
                   children: [
-                    textButton(label: 'Withdraw cash', onPressed: () {}),
-                    SizedBox(width: 35),
-                    textButton(label: 'Deposit funds', onPressed: () {}),
+                    accountCard(
+                      title: 'Kelvin Rono',
+                      subtitle: 'Username',
+                      iconData: Icons.person,
+                    ),
+                    accountCard(
+                      title: 'ronnykelvyne3@gmail.com',
+                      subtitle: 'Email',
+                      iconData: Icons.email,
+                    ),
+                    accountCard(
+                      title: '0727447786',
+                      subtitle: 'Phone',
+                      iconData: Icons.phone,
+                    ),
                   ],
                 ),
-                Container(
-                  height: 150,
-                  width: double.infinity,
-                  color: Colors.green,
+              ),
+              SizedBox(height: 10),
+              Container(
+                height: 185,
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: Column(
+                  children: [
+                    accountRow(
+                      title: 'Account balance :',
+                      value: '100.00',
+                      isCredit: true,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    accountRow(
+                      title: 'Withdrawable :',
+                      value: '90.00',
+                      isCredit: false,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    accountRow(
+                      title: 'Running bids :',
+                      value: '5',
+                      isCredit: true,
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        textButton(label: 'Withdraw cash', onPressed: () {}),
+                        SizedBox(width: 35),
+                        textButton(label: 'Deposit funds', onPressed: () {}),
+                      ],
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
