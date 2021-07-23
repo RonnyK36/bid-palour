@@ -58,7 +58,8 @@ class _AccountState extends State<Account> {
               SizedBox(height: 10),
               Container(
                 height: 185,
-                color: Colors.green,
+                // color: Colors.blue,
+
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: Column(
                   children: [
