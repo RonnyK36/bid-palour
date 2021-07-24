@@ -1,6 +1,7 @@
 import 'package:bid_palour/pages/account.dart';
 import 'package:bid_palour/pages/description.dart';
 import 'package:bid_palour/pages/home.dart';
+import 'package:bid_palour/pages/active_bids.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -44,6 +45,7 @@ class _NavigationState extends State<Navigation> {
       body: PageView(
         children: [
           Home(),
+          ActiveBids(),
           Description(),
           Account(),
         ],
@@ -59,6 +61,12 @@ class _NavigationState extends State<Navigation> {
           BottomNavigationBarItem(
             label: 'Home',
             icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: 'Active bids',
+            icon: Icon(
+              Icons.network_cell,
+            ),
           ),
           BottomNavigationBarItem(
             label: 'About',

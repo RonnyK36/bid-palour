@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 const kButtonTextStyle = TextStyle(
@@ -21,4 +23,8 @@ const kAccountWinning = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.bold,
   color: Colors.green,
+);
+
+const kBidMultiplier = TextStyle(
+  fontSize: 17,
 );
