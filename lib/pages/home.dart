@@ -1,8 +1,9 @@
-import 'package:bid_palour/config/config.dart';
+import 'package:bid_palour/controllers/bid_controller.dart';
 import 'package:bid_palour/widgets/app_bar.dart';
 import 'package:bid_palour/widgets/bid_multiplier.dart';
 import 'package:bid_palour/widgets/button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,6 +11,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  BidController controller = Get.find<BidController>();
+
   List<bool> fiftySelected = [
     true,
     false,
