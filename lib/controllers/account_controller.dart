@@ -1,4 +1,4 @@
-import 'package:get/geta.dart';
+import 'package:get/get.dart';
 
 class AccountController extends GetxController {
   final accountNumber = ''.obs;
