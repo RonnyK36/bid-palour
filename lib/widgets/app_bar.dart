@@ -18,24 +18,37 @@ AppBar header(
             color: Theme.of(context).primaryColor,
           ),
         ),
-        Row(
-          children: [
-            Text(
-              'Kshs. ',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 14,
-              ),
+        Container(
+          height: 35,
+          width: 110,
+          decoration: BoxDecoration(
+            color: Colors.red.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Row(
+              textBaseline: TextBaseline.alphabetic,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Kshs. ',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 12,
+                  ),
+                ),
+                Text(
+                  balance.toString(),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
-            Text(
-              balance.toString(),
-              style: TextStyle(
-                fontSize: 25,
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
+          ),
         ),
       ],
     ),
