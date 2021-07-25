@@ -33,19 +33,13 @@ class _DetailsState extends State<Details> {
             height: 600,
             width: double.infinity,
             child: Card(
-              elevation: 0,
+              elevation: 5,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SizedBox(
-                      height: 5,
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
                     Card(
                       elevation: 0,
                       child: Container(
@@ -58,9 +52,6 @@ class _DetailsState extends State<Details> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 5,
-                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -72,9 +63,6 @@ class _DetailsState extends State<Details> {
                           ),
                         ),
                       ],
-                    ),
-                    SizedBox(
-                      height: 5,
                     ),
                     Container(
                       height: 40,
@@ -121,7 +109,7 @@ class _DetailsState extends State<Details> {
                             top: 8,
                           ),
                           child: Text(
-                            'Bid and win x10',
+                            'Bid and win KES ${widget.deduction * 10}.',
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
@@ -159,6 +147,7 @@ class _DetailsState extends State<Details> {
                       height: 100,
                       width: double.infinity,
                       color: Colors.green.withOpacity(0.5),
+                      //  Invoice - Spending, check balance
                     ),
                     Container(
                       height: 40,

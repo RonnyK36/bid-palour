@@ -12,7 +12,7 @@ class Navigation extends StatefulWidget {
 
 class _NavigationState extends State<Navigation> {
   PageController pageController = PageController();
-  int pageIndex = 0;
+  int pageIndex = 2;
 
   onPageChanged(int pageIndex) {
     setState(() {
