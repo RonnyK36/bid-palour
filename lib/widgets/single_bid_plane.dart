@@ -34,7 +34,7 @@ Container singleBidPlane(
               elevation: 0,
               child: Container(
                 height: 100,
-                width: MediaQuery.of(context).size.width * 0.4,
+                width: MediaQuery.of(context).size.width * 0.48,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(image),
@@ -89,7 +89,7 @@ Container singleBidPlane(
               height: 40,
 
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 3),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

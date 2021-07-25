@@ -14,16 +14,16 @@ class _ActiveBidsState extends State<ActiveBids> {
     return Scaffold(
       body: ListView(
         children: [
-          Text('Active bids'),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              height: 200,
+              height: 100,
               width: double.infinity,
               // color: Colors.green,
               child: Card(
                 elevation: 5,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
                       'Your current Balance:',
