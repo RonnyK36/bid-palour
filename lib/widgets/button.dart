@@ -8,11 +8,11 @@ Container reusableButton({
   return Container(
     height: 40,
     width: 200,
-    child: ElevatedButton(
+    child: OutlinedButton(
       onPressed: onPressed!,
       child: Text(
         buttonName!,
-        style: kButtonTextStyle,
+        // style: kButtonTextStyle,
       ),
     ),
   );

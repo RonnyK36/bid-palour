@@ -5,7 +5,7 @@ class Description extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: header(context, titleText: "How it works"),
+      appBar: header(context, titleText: "How it works", balance: 100),
       body: ListView(
         children: [
           Column(
