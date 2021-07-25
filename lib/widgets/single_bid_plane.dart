@@ -88,21 +88,30 @@ Container singleBidPlane(
             Container(
               height: 40,
 
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'View more',
-                      style: TextStyle(color: Colors.black),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (c) => Details(
+                                    image: image,
+                                    deduction: int.parse(deduction),
+                                  ))),
+                      child: Text(
+                        'View more',
+                        style: TextStyle(color: Colors.black),
+                      ),
                     ),
-                  ),
-                  OutlinedButton(
-                    onPressed: () {},
-                    child: Text('Bid now'),
-                  ),
-                ],
+                    OutlinedButton(
+                      onPressed: () {},
+                      child: Text('Bid now'),
+                    ),
+                  ],
+                ),
               ),
               // child: reusableButton(
               // onPressed: () {}, buttonName: "Bid @ $deduction"),

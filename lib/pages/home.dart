@@ -20,7 +20,12 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.green[700],
-      appBar: header(context, titleText: '07******786', balance: 100),
+      appBar: header(
+        context,
+        titleText: '07******786',
+        balance: 100,
+        isHomePage: true,
+      ),
       body: ListView(
         children: [
           SizedBox(
@@ -36,8 +41,9 @@ class _HomeState extends State<Home> {
             options: CarouselOptions(
               height: 50,
               autoPlay: true,
+              autoPlayCurve: Curves.easeInOut,
               autoPlayInterval: Duration(seconds: 3),
-              autoPlayAnimationDuration: Duration(seconds: 5),
+              autoPlayAnimationDuration: Duration(seconds: 3),
               enlargeCenterPage: true,
             ),
           ),
@@ -49,8 +55,26 @@ class _HomeState extends State<Home> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Coming Soon'),
-                      Text('See All'),
+                      Text(
+                        'Coming Soon',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Container(
+                        height: 40,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'See All',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -63,20 +87,24 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       categories(
-                        image: 'images/cash.jpg',
-                        label: 'Cash',
-                      ),
-                      categories(
+                        context,
                         image: 'images/phones.jpg',
                         label: 'Phones',
                       ),
                       categories(
+                        context,
+                        image: 'images/hts.jpg',
+                        label: 'Sound systems',
+                      ),
+                      categories(
+                        context,
                         image: 'images/tvs.jpg',
                         label: 'TVs',
                       ),
                       categories(
+                        context,
                         image: 'images/electronics.jpg',
-                        label: 'Electronics',
+                        label: 'Others',
                       ),
                     ],
                   ),

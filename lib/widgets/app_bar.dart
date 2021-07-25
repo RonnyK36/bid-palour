@@ -4,6 +4,7 @@ AppBar header(
   context, {
   required String titleText,
   required int balance,
+  bool isHomePage = false,
 }) {
   return AppBar(
     elevation: 0,
@@ -11,19 +12,31 @@ AppBar header(
     title: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          titleText,
-          style: TextStyle(
-            fontSize: 25,
-            color: Theme.of(context).primaryColor,
-          ),
+        Row(
+          children: [
+            Container(
+              child: isHomePage
+                  ? CircleAvatar(
+                      backgroundImage: AssetImage('images/alien_circle.jpg'),
+                    )
+                  : Text(''),
+            ),
+            SizedBox(width: 3),
+            Text(
+              titleText,
+              style: TextStyle(
+                fontSize: 25,
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+          ],
         ),
         Container(
           height: 35,
           width: 110,
           decoration: BoxDecoration(
             color: Colors.red.withOpacity(0.5),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
             padding: const EdgeInsets.all(8),
