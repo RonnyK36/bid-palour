@@ -45,52 +45,40 @@ Container singleBidPlane(
             SizedBox(
               height: 5,
             ),
-            // Center(
-            //   child: Container(
-            //     height: 40,
-            //     width: MediaQuery.of(context).size.width * 0.4,
-            //     color: Colors.white,
-            //     child: ToggleButtons(
-            //       isSelected: planeIsSelected,
-            //       fillColor: Colors.green.withOpacity(0.7),
-            //       selectedBorderColor: Colors.white,
-            //       selectedColor: Colors.white,
-            //       color: Colors.black,
-            //       renderBorder: true,
-            //       splashColor: Colors.red.withOpacity(0.5),
-            //       onPressed: (int selectedIndex) {
-            //         setState(() {
-            //           for (int index = 0;
-            //               index < planeIsSelected.length;
-            //               index++) {
-            //             if (index == selectedIndex) {
-            //               planeIsSelected[index] = true;
-            //               print('Multiplying by: ${index + 2}');
-            //             } else {
-            //               planeIsSelected[index] = false;
-            //             }
-            //           }
-            //         });
-            //       },
-            //       children: [
-            //         bidMultiplierButton(times: 2),
-            //         bidMultiplierButton(times: 3),
-            //         bidMultiplierButton(times: 4),
-            //         bidMultiplierButton(times: 5),
-            //       ],
-            //     ),
-            //   ),
-            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: Text('Bid and win x10'),
+                  child: Text(
+                    'Bid and win x10',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
-                  child: Text('@ $deduction'),
+                  child: Row(
+                    children: [
+                      Text(
+                        '@',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        '$deduction',
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -105,9 +93,12 @@ Container singleBidPlane(
                 children: [
                   TextButton(
                     onPressed: () {},
-                    child: Text('View more'),
+                    child: Text(
+                      'View more',
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
-                  TextButton(
+                  OutlinedButton(
                     onPressed: () {},
                     child: Text('Bid now'),
                   ),

@@ -5,6 +5,7 @@ import 'package:bid_palour/widgets/app_bar.dart';
 import 'package:bid_palour/widgets/bid_multiplier.dart';
 import 'package:bid_palour/widgets/button.dart';
 import 'package:bid_palour/widgets/carousel_container.dart';
+import 'package:bid_palour/widgets/feature_categories.dart';
 import 'package:bid_palour/widgets/single_bid_plane.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.green[700],
       appBar: header(context, titleText: '07******786', balance: 100),
       body: ListView(
         children: [
@@ -35,8 +36,53 @@ class _HomeState extends State<Home> {
             options: CarouselOptions(
               height: 50,
               autoPlay: true,
+              autoPlayInterval: Duration(seconds: 3),
+              autoPlayAnimationDuration: Duration(seconds: 5),
               enlargeCenterPage: true,
             ),
+          ),
+          Column(
+            children: [
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Coming Soon'),
+                      Text('See All'),
+                    ],
+                  ),
+                ),
+              ),
+              Card(
+                child: Container(
+                  height: 90,
+                  width: double.infinity,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      categories(
+                        image: 'images/cash.jpg',
+                        label: 'Cash',
+                      ),
+                      categories(
+                        image: 'images/phones.jpg',
+                        label: 'Phones',
+                      ),
+                      categories(
+                        image: 'images/tvs.jpg',
+                        label: 'TVs',
+                      ),
+                      categories(
+                        image: 'images/electronics.jpg',
+                        label: 'Electronics',
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
           Row(
             children: [

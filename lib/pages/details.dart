@@ -30,7 +30,7 @@ class _DetailsState extends State<Details> {
       body: ListView(
         children: [
           Container(
-            height: 400,
+            height: 600,
             width: double.infinity,
             child: Card(
               elevation: 0,
@@ -38,7 +38,7 @@ class _DetailsState extends State<Details> {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
                       height: 5,
@@ -57,6 +57,21 @@ class _DetailsState extends State<Details> {
                           ),
                         ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Bid this number of times: ',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: 5,
@@ -141,11 +156,20 @@ class _DetailsState extends State<Details> {
                       height: 10,
                     ),
                     Container(
+                      height: 100,
+                      width: double.infinity,
+                      color: Colors.green.withOpacity(0.5),
+                    ),
+                    Container(
                       height: 40,
                       width: MediaQuery.of(context).size.width * 0.9,
                       child: ElevatedButton(
                         onPressed: () {},
-                        child: Text('Bid now @ ${widget.deduction.toString()}'),
+                        child: Text(
+                          // 'Bid now @ ${widget.deduction.toString()}/bid',
+                          'Bid now @ $spend',
+                          style: TextStyle(fontSize: 20),
+                        ),
                       ),
                       // child: reusableButton(
                       // onPressed: () {}, buttonName: "Bid @ $deduction"),
