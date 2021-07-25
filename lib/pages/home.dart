@@ -94,7 +94,7 @@ class _HomeState extends State<Home> {
                       categories(
                         context,
                         image: 'images/hts.jpg',
-                        label: 'Sound systems',
+                        label: 'Sound system',
                       ),
                       categories(
                         context,

@@ -25,7 +25,7 @@ AppBar header(
             Text(
               titleText,
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 22,
                 color: Theme.of(context).primaryColor,
               ),
             ),

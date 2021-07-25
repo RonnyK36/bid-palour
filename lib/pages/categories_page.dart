@@ -16,6 +16,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
     return Scaffold(
       appBar: header(
         context,
+        isHomePage: false,
         titleText: widget.label,
         balance: 100,
       ),
