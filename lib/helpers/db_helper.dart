@@ -28,47 +28,4 @@ class Database {
       rethrow;
     }
   }
-
-  Future<void> addTodo(String content, String uid) async {
-    try {
-      await _firestore.collection("users").doc(uid).collection("todos").add({
-        'dateCreated': Timestamp.now(),
-        'content': content,
-        'done': false,
-      });
-    } catch (e) {
-      print(e);
-      rethrow;
-    }
-  }
-
-  /*Stream<List<TodoModel>> todoStream(String uid) {
-    return _firestore
-        .collection("users")
-        .document(uid)
-        .collection("todos")
-        .orderBy("dateCreated", descending: true)
-        .snapshots()
-        .map((QuerySnapshot query) {
-      List<TodoModel> retVal = List();
-      query.documents.forEach((element) {
-        retVal.add(TodoModel.fromDocumentSnapshot(element));
-      });
-      return retVal;
-    });
-  }
-
-  Future<void> updateTodo(bool newValue, String uid, String todoId) async {
-    try {
-      _firestore
-          .collection("users")
-          .document(uid)
-          .collection("todos")
-          .document(todoId)
-          .updateData({"done": newValue});
-    } catch (e) {
-      print(e);
-      rethrow;
-    }
-  }*/
 }
