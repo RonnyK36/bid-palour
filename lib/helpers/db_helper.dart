@@ -2,13 +2,13 @@ import 'package:bid_palour/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Database {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<bool> createNewUser(UserModel user) async {
     try {
       await _firestore.collection("users").doc(user.id).set({
-        "name": user.name,
         "email": user.email,
+        "phone": user.phone,
       });
       return true;
     } catch (e) {
@@ -26,6 +26,26 @@ class Database {
     } catch (e) {
       print(e);
       rethrow;
+    }
+  }
+
+  static savePayment(
+      {required UserModel user,
+      required int amount,
+      required int value}) async {
+    try {
+      await _firestore
+          .collection("register")
+          .doc("payments")
+          .collection("payments")
+          .doc(user.id)
+          .set({
+        "phone": user.phone,
+        "amount": amount,
+        "value": value,
+      });
+    } catch (e) {
+      print(e);
     }
   }
 }

@@ -2,14 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
   late String? id;
-  late String? name;
   late String? email;
+  late String? phone;
 
-  UserModel({this.id, this.name, this.email});
+  UserModel({this.id, this.email, this.phone});
 
   UserModel.fromDocumentSnapshot({required DocumentSnapshot documentSnapshot}) {
     id = documentSnapshot.id;
-    name = documentSnapshot["name"];
     email = documentSnapshot["email"];
+    phone = documentSnapshot["phone"];
   }
 }

@@ -33,6 +33,7 @@ dependencies:
   carousel_slider: ^4.0.0
   firebase_auth: ^3.0.1
   google_sign_in: ^5.0.5
+  flutterwave: ^0.0.3-dev.4
 
 
 dev_dependencies:

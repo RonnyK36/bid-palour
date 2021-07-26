@@ -19,15 +19,15 @@ class AuthController extends GetxController {
     super.onInit();
   }
 
-  void createUser(String name, String email, String password) async {
+  void createUser(String phone, String email, String password) async {
     try {
       UserCredential _authResult = await _auth.createUserWithEmailAndPassword(
           email: email.trim(), password: password);
       //create user in db_helper.dart
       UserModel _user = UserModel(
         id: _authResult.user!.uid,
-        name: name,
         email: _authResult.user!.email,
+        phone: phone,
       );
       if (await Database().createNewUser(_user)) {
         Get.find<AccountController>().user = _user;
@@ -42,7 +42,7 @@ class AuthController extends GetxController {
     }
   }
 
-  signInWithGoogle() async {
+  void signInWithGoogle() async {
     try {
       GoogleSignInAccount googleSignInAccount = (await _googleSignIn.signIn())!;
       GoogleSignInAuthentication googleSignInAuthentication =
@@ -57,8 +57,8 @@ class AuthController extends GetxController {
 
       UserModel _user = UserModel(
         id: _authResult.user!.uid,
-        name: _authResult.user!.displayName,
         email: _authResult.user!.email,
+        phone: _authResult.user!.phoneNumber,
       );
 
       if (await Database().createNewUser(_user)) {
