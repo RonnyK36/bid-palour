@@ -11,14 +11,14 @@ class AuthHelper extends GetxController {
     Map<String, dynamic> userData = {
       "name": user.displayName,
       "email": user.email,
-      "last_login": user.metadata.lastSignInTime.millisecondsSinceEpoch,
-      "created_at": user.metadata.creationTime.millisecondsSinceEpoch,
+      "last_login": user.metadata.lastSignInTime!.millisecondsSinceEpoch,
+      "created_at": user.metadata.creationTime!.millisecondsSinceEpoch,
       "role": "user",
     };
     final userRef = _db.collection("users").doc(user.uid);
     if ((await userRef.get()).exists) {
       await userRef.update({
-        "last_login": user.metadata.lastSignInTime.millisecondsSinceEpoch,
+        "last_login": user.metadata.lastSignInTime!.millisecondsSinceEpoch,
       });
     } else {
       await _db.collection("users").doc(user.uid).set(userData);

@@ -2,14 +2,16 @@ import 'package:bid_palour/helpers/db_helper.dart';
 import 'package:bid_palour/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import 'account_controller.dart';
 
 class AuthController extends GetxController {
   FirebaseAuth _auth = FirebaseAuth.instance;
-  late Rx<User> _firebaseUser;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  late Rx<User?> _firebaseUser;
 
-  User get user => _firebaseUser.value;
+  User? get user => _firebaseUser.value;
 
   @override
   onInit() {
@@ -23,9 +25,9 @@ class AuthController extends GetxController {
           email: email.trim(), password: password);
       //create user in db_helper.dart
       UserModel _user = UserModel(
-        id: _authResult.user.uid,
+        id: _authResult.user!.uid,
         name: name,
-        email: _authResult.user.email,
+        email: _authResult.user!.email,
       );
       if (await Database().createNewUser(_user)) {
         Get.find<AccountController>().user = _user;
@@ -40,12 +42,44 @@ class AuthController extends GetxController {
     }
   }
 
+  signInWithGoogle() async {
+    try {
+      GoogleSignInAccount googleSignInAccount = (await _googleSignIn.signIn())!;
+      GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+
+      AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+
+      UserCredential _authResult = await _auth.signInWithCredential(credential);
+
+      UserModel _user = UserModel(
+        id: _authResult.user!.uid,
+        name: _authResult.user!.displayName,
+        email: _authResult.user!.email,
+      );
+
+      if (await Database().createNewUser(_user)) {
+        Get.find<AccountController>().user = _user;
+        Get.back();
+      }
+    } catch (e) {
+      Get.snackbar(
+        "Error Signing in",
+        e.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
   void login(String email, String password) async {
     try {
       UserCredential _authResult = await _auth.signInWithEmailAndPassword(
           email: email.trim(), password: password);
       Get.find<AccountController>().user =
-          await Database().getUser(_authResult.user.uid);
+          await Database().getUser(_authResult.user!.uid);
     } catch (e) {
       Get.snackbar(
         "Error signing in",
