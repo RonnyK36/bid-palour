@@ -28,3 +28,8 @@ const kAccountWinning = TextStyle(
 const kBidMultiplier = TextStyle(
   fontSize: 17,
 );
+const kInvoiceHeader = TextStyle(
+  color: Colors.green,
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+);
