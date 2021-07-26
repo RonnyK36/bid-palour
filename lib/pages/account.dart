@@ -19,7 +19,7 @@ class _AccountState extends State<Account> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: header(context, titleText: 'Profile'),
+      appBar: header(context, titleText: 'Profile', balance: 100),
       body: Center(
         child: Container(
           width: double.infinity,
