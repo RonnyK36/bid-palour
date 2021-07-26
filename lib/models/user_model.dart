@@ -1,14 +1,15 @@
-import 'account_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class AppUser {
-  String name;
-  Account account;
-  double balance;
-  int phone;
+class UserModel {
+  late String? id;
+  late String? name;
+  late String? email;
 
-  AppUser(
-      {required this.name,
-      required this.account,
-      required this.balance,
-      required this.phone});
+  UserModel({this.id, this.name, this.email});
+
+  UserModel.fromDocumentSnapshot({required DocumentSnapshot documentSnapshot}) {
+    id = documentSnapshot.id;
+    name = documentSnapshot["name"];
+    email = documentSnapshot["email"];
+  }
 }
