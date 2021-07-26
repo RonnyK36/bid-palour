@@ -1,16 +1,8 @@
-
-import 'package:bid_palour/config/config.dart';
-import 'package:bid_palour/pages/description.dart';
-import 'package:bid_palour/pages/details.dart';
 import 'package:bid_palour/widgets/app_bar.dart';
-import 'package:bid_palour/widgets/bid_multiplier.dart';
-import 'package:bid_palour/widgets/button.dart';
 import 'package:bid_palour/widgets/carousel_container.dart';
-import 'package:bid_palour/widgets/feature_categories.dart';
 import 'package:bid_palour/widgets/single_bid_plane.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -18,7 +10,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,67 +43,67 @@ class _HomeState extends State<Home> {
           ),
           Column(
             children: [
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Coming Soon',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Container(
-                        height: 40,
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'See All',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Card(
-                child: Container(
-                  height: 90,
-                  width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      categories(
-                        context,
-                        image: 'images/phones.jpg',
-                        label: 'Phones',
-                      ),
-                      categories(
-                        context,
-                        image: 'images/hts.jpg',
-                        label: 'Sound system',
-                      ),
-                      categories(
-                        context,
-                        image: 'images/tvs.jpg',
-                        label: 'TVs',
-                      ),
-                      categories(
-                        context,
-                        image: 'images/electronics.jpg',
-                        label: 'Others',
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Card(
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //       children: [
+              //         Text(
+              //           'Coming Soon',
+              //           style: TextStyle(
+              //             fontSize: 20,
+              //             fontWeight: FontWeight.bold,
+              //           ),
+              //         ),
+              //         Container(
+              //           height: 40,
+              //           child: TextButton(
+              //             onPressed: () {},
+              //             child: Text(
+              //               'See All',
+              //               style: TextStyle(
+              //                 fontSize: 20,
+              //                 fontWeight: FontWeight.bold,
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // Card(
+              //   child: Container(
+              //     height: 90,
+              //     width: double.infinity,
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //       children: [
+              //         categories(
+              //           context,
+              //           image: 'images/phones.jpg',
+              //           label: 'Phones',
+              //         ),
+              //         categories(
+              //           context,
+              //           image: 'images/hts.jpg',
+              //           label: 'Sound system',
+              //         ),
+              //         categories(
+              //           context,
+              //           image: 'images/tvs.jpg',
+              //           label: 'TVs',
+              //         ),
+              //         categories(
+              //           context,
+              //           image: 'images/electronics.jpg',
+              //           label: 'Others',
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           Row(

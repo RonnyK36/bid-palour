@@ -3,8 +3,7 @@ import 'package:bid_palour/widgets/account_row.dart';
 import 'package:bid_palour/widgets/app_bar.dart';
 import 'package:bid_palour/widgets/bid_multiplier.dart';
 import 'package:flutter/material.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
-import 'package:flutterwave/flutterwave.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Details extends StatefulWidget {
   final String image;
@@ -23,23 +22,18 @@ class _DetailsState extends State<Details> {
     false,
     false,
     false,
+    false,
   ];
   int spend = 0;
   int balance = 0;
-  int balanceAfter = 0;
-
-  lowBalanceToast() {
-    // Fluttertoast.showToast(
-    //   msg: 'Please deposit KES ${balanceAfter.abs()} more',
-    //   fontSize: 15,
-    //   gravity: ToastGravity.TOP,
-    // );
-  }
+  int myIndex = 0;
+  int possibleWin = 0;
 
   @override
   Widget build(BuildContext context) {
     balance = 100;
-    int myIndex = 0;
+    possibleWin = widget.deduction * 10;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: header(context, titleText: 'Win x10', balance: 100),
@@ -100,11 +94,9 @@ class _DetailsState extends State<Details> {
                               if (index == selectedIndex) {
                                 isSelected[index] = true;
                                 print('Multiplying by: ${index + 2}');
-
-                                spend = (index + 2) * widget.deduction;
-                                balanceAfter = balance - spend;
-
-                                myIndex = (index + 2);
+                                myIndex = index + 1;
+                                spend = (index + 1) * widget.deduction;
+                                possibleWin = widget.deduction * 10;
                               } else {
                                 isSelected[index] = false;
                               }
@@ -112,6 +104,7 @@ class _DetailsState extends State<Details> {
                           });
                         },
                         children: [
+                          bidMultiplierButton(times: 1),
                           bidMultiplierButton(times: 2),
                           bidMultiplierButton(times: 3),
                           bidMultiplierButton(times: 4),
@@ -189,27 +182,24 @@ class _DetailsState extends State<Details> {
                                 ],
                               ),
                               SizedBox(height: 5),
-                              accountRow(
-                                  title: 'Account balance:',
-                                  value: balance.toStringAsFixed(2),
-                                  isCredit: true),
+
                               accountRow(
                                   title: 'Bidding amount:',
                                   value: spend.toStringAsFixed(2),
+                                  isCredit: false),
+                              accountRow(
+                                  title: 'Bids placed:',
+                                  value: myIndex.toString(),
                                   isCredit: false),
                               // accountRow(
                               //     title: 'Bonuses:',
                               //     value: '0.00',
                               //     isCredit: false),
 
-                              // accountRow(
-                              //     title: 'Total dedutions:',
-                              //     value: spend.toStringAsFixed(2),
-                              //     isCredit: false),
                               accountRow(
-                                  title: 'Balance after:',
+                                  title: 'Possible win:',
                                   // value: '${balance - spend}.00',
-                                  value: balanceAfter.toStringAsFixed(2),
+                                  value: possibleWin.toStringAsFixed(2),
                                   isCredit: false),
                             ],
                           ),
@@ -221,9 +211,13 @@ class _DetailsState extends State<Details> {
                       width: MediaQuery.of(context).size.width * 0.9,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (balanceAfter <= 0) {
-                            lowBalanceToast();
-                            print('Please add ${balanceAfter.abs()} more.');
+                          if (spend <= 0) {
+                            Fluttertoast.showToast(
+                              msg: "Please make a selection.",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                            );
+                            print('Please make a selection.');
                           }
                         },
                         child: Text(
@@ -232,8 +226,6 @@ class _DetailsState extends State<Details> {
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
-                      // child: reusableButton(
-                      // onPressed: () {}, buttonName: "Bid @ $deduction"),
                     ),
                   ],
                 ),

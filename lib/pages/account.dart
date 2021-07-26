@@ -68,7 +68,7 @@ class _AccountState extends State<Account> {
                 child: Column(
                   children: [
                     accountRow(
-                      title: 'Account balance :',
+                      title: 'Account balance:',
                       value: '100.00',
                       isCredit: true,
                     ),
