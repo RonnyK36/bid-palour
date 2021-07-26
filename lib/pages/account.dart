@@ -1,9 +1,11 @@
+import 'package:bid_palour/controllers/account_controller.dart';
 import 'package:bid_palour/widgets/account_card.dart';
 import 'package:bid_palour/widgets/account_row.dart';
 import 'package:bid_palour/widgets/app_bar.dart';
 import 'package:bid_palour/widgets/button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Account extends StatefulWidget {
   @override
@@ -11,6 +13,8 @@ class Account extends StatefulWidget {
 }
 
 class _AccountState extends State<Account> {
+  AccountController controller = Get.find<AccountController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

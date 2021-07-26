@@ -1,3 +1,4 @@
+
 import 'package:bid_palour/config/config.dart';
 import 'package:bid_palour/pages/description.dart';
 import 'package:bid_palour/pages/details.dart';
@@ -9,6 +10,7 @@ import 'package:bid_palour/widgets/feature_categories.dart';
 import 'package:bid_palour/widgets/single_bid_plane.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -16,6 +18,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
