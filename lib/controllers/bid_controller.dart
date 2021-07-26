@@ -25,4 +25,5 @@ class BidController extends GetxController {
     bidValue(value);
     print('Bid value: $value');
   }
+
 }

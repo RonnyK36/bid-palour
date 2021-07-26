@@ -30,8 +30,10 @@ dependencies:
   get: ^4.1.4
   firebase_core:
   cloud_firestore:
-  lit_firebase_auth: ^0.3.0
   carousel_slider: ^4.0.0
+  firebase_auth: ^3.0.1
+  google_sign_in: ^5.0.5
+  flutterwave: ^0.0.3-dev.4
 
 
 dev_dependencies:
