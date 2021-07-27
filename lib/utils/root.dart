@@ -1,4 +1,5 @@
 import 'package:bid_palour/controllers/account_controller.dart';
+import 'package:bid_palour/pages/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:bid_palour/controllers/auth_controller.dart';
 import 'package:bid_palour/pages/home.dart';
@@ -13,10 +14,10 @@ class Root extends GetWidget<AuthController> {
       },
       builder: (_) {
         if (Get.find<AuthController>().user?.uid != null) {
-          return Home();
+          return Navigation();
         } else {
           /// TODO: Replace this with authentication screen
-          return Home();
+          return Navigation();
         }
       },
     );
