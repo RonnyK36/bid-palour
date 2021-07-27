@@ -1,5 +1,6 @@
 import 'package:bid_palour/controllers/account_controller.dart';
 import 'package:bid_palour/controllers/bid_controller.dart';
+import 'package:bid_palour/pages/authentication_page.dart';
 import 'package:bid_palour/pages/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,6 +20,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         accentColor: Colors.purple,
       ),
+      // Still working on authentication screen
+      // home: AuthenticationPage(),
       home: Navigation(),
     );
   }
