@@ -8,6 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Account extends StatefulWidget {
+  // final GoogleSignInAccount account;
+  // Account({required this.account});
+
   @override
   _AccountState createState() => _AccountState();
 }
@@ -42,6 +45,7 @@ class _AccountState extends State<Account> {
                 child: Column(
                   children: [
                     accountCard(
+                      // title: widget.account.displayName!,
                       title: 'Kelvin Rono',
                       subtitle: 'Username',
                       iconData: Icons.person,

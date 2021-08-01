@@ -7,6 +7,13 @@ const kButtonTextStyle = TextStyle(
   color: Colors.green,
   fontWeight: FontWeight.bold,
 );
+
+const kTitleTextStyle = TextStyle(
+  fontSize: 45,
+  fontWeight: FontWeight.bold,
+  color: Colors.green,
+  // color: Theme.of(context).primaryColor,
+);
 const kAccountText = TextStyle(
   fontSize: 17,
   fontWeight: FontWeight.bold,

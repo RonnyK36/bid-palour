@@ -149,7 +149,7 @@ class _HomeState extends State<Home> {
               singleBidPlane(
                 context,
                 image: 'images/all_notes.jpg',
-                deduction: '100',
+                deduction: '185',
                 // planeIsSelected: thousandSelected,
               ),
             ],

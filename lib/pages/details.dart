@@ -45,7 +45,7 @@ class _DetailsState extends State<Details> {
             child: Card(
               elevation: 5,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(3.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -76,7 +76,7 @@ class _DetailsState extends State<Details> {
                     ),
                     Container(
                       height: 40,
-                      width: double.infinity,
+                      width: MediaQuery.of(context).size.width,
                       color: Colors.white,
                       child: ToggleButtons(
                         isSelected: isSelected,
