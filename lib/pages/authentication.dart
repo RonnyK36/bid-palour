@@ -1,7 +1,7 @@
 import 'package:bid_palour/pages/account.dart';
+import 'package:bid_palour/pages/active_bids.dart';
 import 'package:bid_palour/pages/description.dart';
 import 'package:bid_palour/pages/home.dart';
-import 'package:bid_palour/pages/active_bids.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +13,7 @@ class Navigation extends StatefulWidget {
 class _NavigationState extends State<Navigation> {
   PageController pageController = PageController();
   int pageIndex = 0;
+  bool isAuth = true;
 
   onPageChanged(int pageIndex) {
     setState(() {
@@ -38,6 +39,14 @@ class _NavigationState extends State<Navigation> {
   void dispose() {
     super.dispose();
     pageController.dispose();
+  }
+
+  Scaffold buildAuthPage() {
+    return Scaffold(
+      body: Container(
+        color: Colors.green,
+      ),
+    );
   }
 
   Scaffold buildPages() {
@@ -86,6 +95,6 @@ class _NavigationState extends State<Navigation> {
 
   @override
   Widget build(BuildContext context) {
-    return buildPages();
+    return isAuth ? buildAuthPage() : buildPages();
   }
 }

@@ -6,7 +6,7 @@ class AuthenticationPage extends StatefulWidget {
   _AuthenticationPageState createState() => _AuthenticationPageState();
 }
 
-// TextEditingController passworController = TextEditingController();
+// TextEditingController passwordController = TextEditingController();
 
 class _AuthenticationPageState extends State<AuthenticationPage> {
   final emailController = TextEditingController();
@@ -59,13 +59,13 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                 SizedBox(height: 30),
                 BuildEmailInput(
                   emailController: emailController,
-                  label: 'Email',
+                  label: 'Phone',
                 ),
                 SizedBox(height: 10),
-                BuildPasswordInput(
-                  passwordController: passwordController,
-                  label: 'Password',
-                ),
+                // BuildPasswordInput(
+                //   passwordController: passwordController,
+                //   label: 'Password',
+                // ),
               ],
             ),
           ),
