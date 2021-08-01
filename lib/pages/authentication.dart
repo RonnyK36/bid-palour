@@ -1,3 +1,4 @@
+import 'package:bid_palour/config/config.dart';
 import 'package:bid_palour/pages/account.dart';
 import 'package:bid_palour/pages/active_bids.dart';
 import 'package:bid_palour/pages/description.dart';
@@ -48,11 +49,10 @@ class _NavigationState extends State<Navigation> {
         // color: Colors.green,
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Spacer(),
               Text(
-                // 'Welcome to bid palor',
                 'Create an account',
                 style: TextStyle(
                   fontSize: 25,
@@ -61,6 +61,18 @@ class _NavigationState extends State<Navigation> {
                 ),
               ),
               SizedBox(height: 30),
+              Text(
+                'You will receive a verification code to the phone number you submit',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
+                  letterSpacing: 1.5,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 30,
+              ),
               Row(
                 children: [
                   Container(
@@ -94,6 +106,45 @@ class _NavigationState extends State<Navigation> {
                   ),
                 ],
               ),
+              Container(
+                height: 35,
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: OutlinedButton(
+                  onPressed: () {},
+                  child: Text(
+                    'SUBMIT',
+                    style: kButtonTextStyle,
+                  ),
+                ),
+              ),
+              // GestureDetector(
+              //   onTap: () => print('Submitting'),
+              //   child: Container(
+              //     height: 35,
+              //     width: MediaQuery.of(context).size.width * 0.8,
+              //     decoration: BoxDecoration(
+              //       color: Theme.of(context).primaryColor,
+              //       borderRadius: BorderRadius.circular(5),
+              //     ),
+              //     child: Center(
+              //       child: Text(
+              //         'SUBMIT',
+              //
+              //       ),
+              //     ),
+              //   ),
+              // ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Already have an account? '),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text('Login'),
+                  ),
+                ],
+              ),
               // SizedBox(height: 100),
               Spacer(),
               Center(
@@ -101,6 +152,7 @@ class _NavigationState extends State<Navigation> {
                   padding: EdgeInsets.all(10.0),
                   child: Text(
                     'Verify your phone number to create your account and start bidding.',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey,

@@ -3,7 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 const kButtonTextStyle = TextStyle(
-  fontSize: 20,
+  fontSize: 17,
+  color: Colors.green,
+  fontWeight: FontWeight.bold,
 );
 const kAccountText = TextStyle(
   fontSize: 17,
