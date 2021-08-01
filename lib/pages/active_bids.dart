@@ -53,6 +53,11 @@ class _ActiveBidsState extends State<ActiveBids> {
               ),
             ),
           ),
+          Container(
+            height: 50,
+            width: double.infinity,
+            color: Colors.green,
+          ),
         ],
       ),
     );

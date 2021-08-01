@@ -67,8 +67,7 @@ class _NavigationState extends State<Navigation> {
       });
     } else {
       setState(() {
-        print(account);
-        isAuth = true;
+        isAuth = false;
       });
     }
   }
@@ -79,21 +78,24 @@ class _NavigationState extends State<Navigation> {
 
   logout() async {
     await googleSignIn.signOut();
-    setState(() {
-      isAuth = false;
-    });
   }
 
   createUser() async {
     final GoogleSignInAccount user = googleSignIn.currentUser!;
     final doc = await userRef.doc(user.id).get();
     if (!doc.exists) {
-      Navigator.push(
+      await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (c) => PhoneVerification(),
         ),
       );
+      userRef.doc(user.id).set({
+        "id": user.id,
+        "photoUrl": user.photoUrl,
+        "displayName": user.displayName,
+        "email": user.email,
+      });
     }
   }
 
@@ -190,6 +192,6 @@ class _NavigationState extends State<Navigation> {
 
   @override
   Widget build(BuildContext context) {
-    return isAuth ? buildAuthPage() : buildPages();
+    return isAuth ? buildPages() : buildAuthPage();
   }
 }
