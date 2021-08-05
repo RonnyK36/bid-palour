@@ -1,5 +1,6 @@
 import 'package:bid_palour/config/config.dart';
 import 'package:bid_palour/pages/account.dart';
+import 'package:bid_palour/pages/records.dart';
 import 'package:bid_palour/pages/description.dart';
 import 'package:bid_palour/pages/home.dart';
 import 'package:bid_palour/pages/verify_phone.dart';
@@ -145,11 +146,11 @@ class _NavigationState extends State<Navigation> {
       body: PageView(
         children: [
           Home(),
-          // ActiveBids(),
-          ElevatedButton(
-            onPressed: () => logout(),
-            child: Text('Logout'),
-          ),
+          Records(),
+          // ElevatedButton(
+          //   onPressed: () => logout(),
+          //   child: Text('Logout'),
+          // ),
           Description(),
           Account(
               // account: account,

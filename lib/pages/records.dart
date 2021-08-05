@@ -1,49 +1,55 @@
 import 'package:bid_palour/config/config.dart';
+import 'package:bid_palour/pages/ended_bids.dart';
+import 'package:bid_palour/pages/ongoing_bids.dart';
 import 'package:flutter/material.dart';
 
-class ActiveBids extends StatefulWidget {
-  const ActiveBids({Key? key}) : super(key: key);
+class Records extends StatefulWidget {
+  const Records({Key? key}) : super(key: key);
 
   @override
-  _ActiveBidsState createState() => _ActiveBidsState();
+  _RecordsState createState() => _RecordsState();
 }
 
-class _ActiveBidsState extends State<ActiveBids> {
+class _RecordsState extends State<Records> with SingleTickerProviderStateMixin {
+  TabController? tabController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    tabController = TabController(length: 2, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          Container(
-            height: 50,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.green,
-            ),
-            child: Column(children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text('Bidding on KES 500'),
-                  Row(
-                    children: [
-                      Text('2'),
-                      Text('Bids'),
-                    ],
-                  ),
-                  Text(
-                    '17-08-2021 9.36 am',
-                  ),
-                ],
-              ),
-            ]),
+      appBar: AppBar(
+        title: Text('Bid Records'),
+        centerTitle: true,
+        bottom: TabBar(
+          controller: tabController,
+          labelStyle: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
+          labelPadding: EdgeInsets.symmetric(horizontal: 30),
+          tabs: [
+            Text('Active'),
+            Text('Ended'),
+          ],
+          isScrollable: true,
+        ),
+      ),
+      body: TabBarView(
+        controller: tabController,
+        children: [
+          OngoingBids(),
+          EndedBids(),
         ],
       ),
     );
   }
 }
-
 
 //  Padding(
 //             padding: const EdgeInsets.all(8.0),

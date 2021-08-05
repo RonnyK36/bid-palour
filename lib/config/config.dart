@@ -42,3 +42,8 @@ const kInvoiceHeader = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.bold,
 );
+
+const kRecordCardTextStyle = TextStyle(
+  fontSize: 15,
+  color: Colors.grey,
+);
