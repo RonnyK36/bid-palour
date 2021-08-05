@@ -1,4 +1,5 @@
 import 'package:bid_palour/config/config.dart';
+import 'package:bid_palour/models/user_model.dart';
 import 'package:bid_palour/pages/account.dart';
 import 'package:bid_palour/pages/records.dart';
 import 'package:bid_palour/pages/description.dart';
@@ -11,6 +12,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 final userRef = FirebaseFirestore.instance.collection('users');
+UserModel? currentUser;
 
 class Navigation extends StatefulWidget {
   @override
@@ -60,17 +62,12 @@ class _NavigationState extends State<Navigation> {
   }
 
   checkAuthentication(account) {
-    if (account != null) {
-      setState(() {
-        // this.account = account;
-        print(account);
-        isAuth = true;
-      });
-    } else {
-      setState(() {
-        isAuth = false;
-      });
-    }
+    createUser();
+    print('Performing create');
+    setState(() {
+      print(account);
+      isAuth = true;
+    });
   }
 
   login() async {
@@ -83,7 +80,7 @@ class _NavigationState extends State<Navigation> {
 
   createUser() async {
     final GoogleSignInAccount user = googleSignIn.currentUser!;
-    final doc = await userRef.doc(user.id).get();
+    DocumentSnapshot doc = await userRef.doc(user.id).get();
     if (!doc.exists) {
       await Navigator.push(
         context,
@@ -97,7 +94,10 @@ class _NavigationState extends State<Navigation> {
         "displayName": user.displayName,
         "email": user.email,
       });
+      doc = await userRef.doc(user.id).get();
     }
+    currentUser = UserModel.fromDocumentSnapshot(documentSnapshot: doc);
+    print(currentUser!.email);
   }
 
   Scaffold buildAuthPage() {
