@@ -93,11 +93,12 @@ class _NavigationState extends State<Navigation> {
         "photoUrl": user.photoUrl,
         "displayName": user.displayName,
         "email": user.email,
+        "phone": '',
       });
       doc = await userRef.doc(user.id).get();
     }
     currentUser = UserModel.fromDocumentSnapshot(documentSnapshot: doc);
-    print(currentUser!.email);
+    // print(currentUser!.email);
   }
 
   Scaffold buildAuthPage() {
