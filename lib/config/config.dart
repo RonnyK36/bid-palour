@@ -3,7 +3,16 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 const kButtonTextStyle = TextStyle(
-  fontSize: 20,
+  fontSize: 17,
+  color: Colors.green,
+  fontWeight: FontWeight.bold,
+);
+
+const kTitleTextStyle = TextStyle(
+  fontSize: 45,
+  fontWeight: FontWeight.bold,
+  color: Colors.green,
+  // color: Theme.of(context).primaryColor,
 );
 const kAccountText = TextStyle(
   fontSize: 17,
@@ -32,4 +41,9 @@ const kInvoiceHeader = TextStyle(
   color: Colors.green,
   fontSize: 20,
   fontWeight: FontWeight.bold,
+);
+
+const kRecordCardTextStyle = TextStyle(
+  fontSize: 15,
+  color: Colors.grey,
 );

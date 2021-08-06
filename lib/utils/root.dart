@@ -1,8 +1,7 @@
 import 'package:bid_palour/controllers/account_controller.dart';
-import 'package:bid_palour/pages/navigation.dart';
-import 'package:flutter/material.dart';
 import 'package:bid_palour/controllers/auth_controller.dart';
-import 'package:bid_palour/pages/home.dart';
+import 'package:bid_palour/pages/authentication.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Root extends GetWidget<AuthController> {
