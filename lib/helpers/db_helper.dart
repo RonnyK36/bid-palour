@@ -66,7 +66,6 @@ class Database {
     try {
       DocumentSnapshot _doc =
           await _firestore.collection("bids").doc(uid).get();
-
       return BidModel.fromDocumentSnapshot(documentSnapshot: _doc);
     } catch (e) {
       print(e);
