@@ -9,6 +9,7 @@ import 'package:bid_palour/pages/verify_phone.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -22,6 +23,8 @@ class Navigation extends StatefulWidget {
 
 class _NavigationState extends State<Navigation> {
   PageController pageController = PageController();
+  AuthController authController = Get.find<AuthController>();
+
   int pageIndex = 0;
   bool isAuth = false;
 
@@ -42,6 +45,10 @@ class _NavigationState extends State<Navigation> {
   @override
   void initState() {
     super.initState();
+
+    if (authController.user != null) {
+      isAuth = true;
+    }
 
     pageController = PageController();
     googleSignIn.onCurrentUserChanged.listen((account) {

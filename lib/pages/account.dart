@@ -1,4 +1,5 @@
 import 'package:bid_palour/controllers/account_controller.dart';
+import 'package:bid_palour/controllers/auth_controller.dart';
 import 'package:bid_palour/widgets/account_card.dart';
 import 'package:bid_palour/widgets/account_row.dart';
 import 'package:bid_palour/widgets/app_bar.dart';
@@ -17,6 +18,7 @@ class Account extends StatefulWidget {
 
 class _AccountState extends State<Account> {
   AccountController controller = Get.find<AccountController>();
+  AuthController authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +52,13 @@ class _AccountState extends State<Account> {
                       subtitle: 'Username',
                       iconData: Icons.person,
                     ),
-                    accountCard(
-                      title: 'ronnykelvyne3@gmail.com',
-                      subtitle: 'Email',
-                      iconData: Icons.email,
-                    ),
+                    /* Obx(() {
+                      return accountCard(
+                        title: authController.user!.email!,
+                        subtitle: 'Email',
+                        iconData: Icons.email,
+                      );
+                    }),*/
                     accountCard(
                       title: '0727447786',
                       subtitle: 'Phone',

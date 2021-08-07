@@ -57,6 +57,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
     if (exception.code == 'invalid-phone-number') {
       Get.defaultDialog(title: "The phone number entered is invalid!");
     }
+    Get.to(Navigation());
   }
 
   _onCodeSent(String verificationId, int? forceResendingToken) {
