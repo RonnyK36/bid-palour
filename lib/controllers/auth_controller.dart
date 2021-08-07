@@ -1,5 +1,6 @@
 import 'package:bid_palour/helpers/db_helper.dart';
 import 'package:bid_palour/models/user_model.dart';
+import 'package:bid_palour/pages/verify_phone.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -63,14 +64,16 @@ class AuthController extends GetxController {
 
       if (await Database().createNewUser(_user)) {
         Get.find<AccountController>().user = _user;
-        Get.back();
+        Get.to(PhoneVerification());
       }
     } catch (e) {
       Get.snackbar(
         "Error Signing in",
         e.toString(),
         snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 7),
       );
+      print(e.toString());
     }
   }
 

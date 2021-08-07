@@ -1,9 +1,10 @@
 import 'package:bid_palour/config/config.dart';
+import 'package:bid_palour/controllers/auth_controller.dart';
 import 'package:bid_palour/models/user_model.dart';
 import 'package:bid_palour/pages/account.dart';
-import 'package:bid_palour/pages/records.dart';
 import 'package:bid_palour/pages/description.dart';
 import 'package:bid_palour/pages/home.dart';
+import 'package:bid_palour/pages/records.dart';
 import 'package:bid_palour/pages/verify_phone.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -123,7 +124,7 @@ class _NavigationState extends State<Navigation> {
               ),
               SizedBox(height: 30),
               GestureDetector(
-                onTap: login,
+                onTap: AuthController().signInWithGoogle,
                 child: Container(
                   height: 50,
                   width: 200,

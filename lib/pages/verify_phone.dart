@@ -1,6 +1,9 @@
 import 'package:bid_palour/config/config.dart';
+import 'package:bid_palour/pages/authentication.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PhoneVerification extends StatefulWidget {
   const PhoneVerification({Key? key}) : super(key: key);
@@ -10,6 +13,62 @@ class PhoneVerification extends StatefulWidget {
 }
 
 class _PhoneVerificationState extends State<PhoneVerification> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  TextEditingController phoneNumber = TextEditingController();
+  TextEditingController otpCode = TextEditingController();
+  bool isLoading = false;
+  String? verificationId;
+  String? _countryCode;
+  String? _formattedPhone;
+
+  Future<void> phoneSignIn({required String? phoneNumber}) async {
+    await _auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber!,
+        verificationCompleted: _onVerificationCompleted,
+        verificationFailed: _onVerificationFailed,
+        codeSent: _onCodeSent,
+        codeAutoRetrievalTimeout: _onCodeTimeout);
+  }
+
+  _onVerificationCompleted(PhoneAuthCredential authCredential) async {
+    print("verification completed ${authCredential.smsCode}");
+    User? user = FirebaseAuth.instance.currentUser;
+    setState(() {
+      this.otpCode.text = authCredential.smsCode!;
+    });
+    if (authCredential.smsCode != null) {
+      try {
+        UserCredential credential =
+            await user!.linkWithCredential(authCredential);
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'provider-already-linked') {
+          await _auth.signInWithCredential(authCredential);
+        }
+      }
+      setState(() {
+        isLoading = false;
+      });
+      Get.to(Navigation());
+    }
+  }
+
+  _onVerificationFailed(FirebaseAuthException exception) {
+    if (exception.code == 'invalid-phone-number') {
+      Get.defaultDialog(title: "The phone number entered is invalid!");
+    }
+  }
+
+  _onCodeSent(String verificationId, int? forceResendingToken) {
+    this.verificationId = verificationId;
+    print(forceResendingToken);
+    print("code sent");
+  }
+
+  _onCodeTimeout(String timeout) {
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +102,14 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                     width: MediaQuery.of(context).size.width * 0.3,
                     height: 70,
                     child: CountryCodePicker(
+                      onInit: (countryCode) {
+                        _countryCode = countryCode!.dialCode;
+                      },
+                      onChanged: (countryCode) {
+                        setState(() {
+                          _countryCode = countryCode.dialCode;
+                        });
+                      },
                       initialSelection: 'Kenya',
                       textStyle: TextStyle(
                         fontSize: 15,
@@ -58,11 +125,13 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                     height: 50,
                     width: MediaQuery.of(context).size.width * 0.6,
                     child: Form(
+                      key: _formKey,
                       child: TextFormField(
+                        controller: phoneNumber,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
                           labelText: 'Phone Number',
-                          hintText: 'eg 727447786',
+                          hintText: 'eg 7********',
                           border: OutlineInputBorder(),
                         ),
                       ),
@@ -75,7 +144,9 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: OutlinedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    _formattedPhone = '$_countryCode${phoneNumber.text}';
+                    print(_formattedPhone);
+                    phoneSignIn(phoneNumber: _formattedPhone);
                   },
                   child: Text(
                     'SUBMIT',
