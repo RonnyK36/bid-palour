@@ -26,4 +26,7 @@ class BidController extends GetxController {
     print('Bid value: $value');
   }
 
+  bindUserToBid(String bidId) {}
+
+  addBidToSession(String bidID) {}
 }
