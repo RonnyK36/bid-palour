@@ -30,14 +30,14 @@ dependencies:
   get: ^4.1.4
   firebase_core:
   cloud_firestore:
-  carousel_slider: ^4.0.0
+  carousel_slider:
   firebase_auth: ^3.0.1
-  google_sign_in: ^5.0.5
-  flutterwave: ^0.0.3-dev.4
-  fluttertoast: ^8.0.7
-  country_code_picker: ^2.0.2
-
-
+  google_sign_in:
+  flutterwave:
+  fluttertoast:
+  country_code_picker:
+  otp_screen:
+  flutter_otp: ^0.3.2
 
 dev_dependencies:
   flutter_test:
