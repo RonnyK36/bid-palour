@@ -38,9 +38,11 @@ class _NavigationState extends State<Navigation> {
   void initState() {
     super.initState();
 
+    /// TODO: Fix authController issue
     /*if (authController.user != null) {
       isAuth = true;
     }*/
+
     isAuth = true;
 
     pageController = PageController();
