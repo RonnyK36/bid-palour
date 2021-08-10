@@ -98,4 +98,14 @@ class Database {
       rethrow;
     }
   }
+
+  Future<void> updateSession(String sessionId) async {
+    try {
+      DocumentSnapshot _doc =
+          await _firestore.collection("sessions").doc(sessionId).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
 }

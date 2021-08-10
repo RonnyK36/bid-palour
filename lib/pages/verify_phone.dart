@@ -1,9 +1,9 @@
-import 'package:bid_palour/config/config.dart';
-import 'package:bid_palour/pages/authentication.dart';
-import 'package:country_code_picker/country_code_picker.dart';
+import 'package:bid_palour/controllers/account_controller.dart';
+import 'package:bid_palour/pages/navigation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:otp_screen/otp_screen.dart';
 
 class PhoneVerification extends StatefulWidget {
   const PhoneVerification({Key? key}) : super(key: key);
@@ -13,6 +13,7 @@ class PhoneVerification extends StatefulWidget {
 }
 
 class _PhoneVerificationState extends State<PhoneVerification> {
+  AccountController controller = Get.find<AccountController>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController phoneNumber = TextEditingController();
@@ -55,7 +56,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
 
   _onVerificationFailed(FirebaseAuthException exception) {
     if (exception.code == 'invalid-phone-number') {
-      Get.defaultDialog(title: "The phone number entered is invalid!");
+      Get.defaultDialog(title: "The phone number/code entered is invalid!");
     }
     Get.to(Navigation());
   }
@@ -70,10 +71,42 @@ class _PhoneVerificationState extends State<PhoneVerification> {
     return null;
   }
 
+  Future<String> validateOtp(String otp) async {
+    await Future.delayed(Duration(milliseconds: 2000));
+    if (otp == "1234") {
+      Get.off(Navigation());
+      return "Phone verified successfuly";
+    } else {
+      return "The entered Otp is wrong";
+    }
+  }
+
+  void moveToNextScreen(context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Navigation()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: Obx(() {
+        return OtpScreen.withGradientBackground(
+          topColor: Colors.green,
+          bottomColor: Color(0xFF753a88),
+          otpLength: 4,
+          validateOtp: validateOtp,
+          routeCallback: moveToNextScreen,
+          themeColor: Colors.white,
+          titleColor: Colors.white,
+          title: "Phone Number Verification",
+          subTitle:
+              "Enter OTP sent to the MPESA number: \n${controller.accountNumber.toString()}",
+          icon: Icon(
+            Icons.account_circle_outlined,
+            color: Colors.white,
+          ),
+        );
+      }) /*Container(
         // color: Colors.green,
         child: Center(
           child: Column(
@@ -203,7 +236,8 @@ class _PhoneVerificationState extends State<PhoneVerification> {
             ],
           ),
         ),
-      ),
+      )*/
+      ,
     );
   }
 }

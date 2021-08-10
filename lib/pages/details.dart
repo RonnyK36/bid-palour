@@ -3,7 +3,7 @@ import 'package:bid_palour/widgets/account_row.dart';
 import 'package:bid_palour/widgets/app_bar.dart';
 import 'package:bid_palour/widgets/bid_multiplier.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 
 class Details extends StatefulWidget {
   final String image;
@@ -212,11 +212,8 @@ class _DetailsState extends State<Details> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (spend <= 0) {
-                            Fluttertoast.showToast(
-                              msg: "Please make a selection.",
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.CENTER,
-                            );
+                            Get.defaultDialog(
+                                title: "Please make a selection.");
                             print('Please make a selection.');
                           }
                         },

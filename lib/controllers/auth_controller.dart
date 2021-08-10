@@ -1,6 +1,6 @@
 import 'package:bid_palour/helpers/db_helper.dart';
 import 'package:bid_palour/models/user_model.dart';
-import 'package:bid_palour/pages/verify_phone.dart';
+import 'package:bid_palour/widgets/mpesa_phone_input.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -10,14 +10,14 @@ import 'account_controller.dart';
 class AuthController extends GetxController {
   FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
-  late Rx<User?> _firebaseUser;
+  late Rx<User?> _firebaseUser = _auth.currentUser.obs;
 
   User? get user => _firebaseUser.value;
 
   @override
   onInit() {
-    _firebaseUser.bindStream(_auth.authStateChanges());
     super.onInit();
+    //_firebaseUser.bindStream(_auth.authStateChanges());
   }
 
   void createUser(String phone, String email, String password) async {
@@ -64,7 +64,7 @@ class AuthController extends GetxController {
 
       if (await Database().createNewUser(_user)) {
         Get.find<AccountController>().user = _user;
-        Get.to(PhoneVerification());
+        Get.to(PhoneInput());
       }
     } catch (e) {
       Get.snackbar(

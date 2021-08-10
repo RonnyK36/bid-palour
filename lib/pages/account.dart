@@ -4,9 +4,12 @@ import 'package:bid_palour/widgets/account_card.dart';
 import 'package:bid_palour/widgets/account_row.dart';
 import 'package:bid_palour/widgets/app_bar.dart';
 import 'package:bid_palour/widgets/button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'login_page.dart';
 
 class Account extends StatefulWidget {
   // final GoogleSignInAccount account;
@@ -17,8 +20,20 @@ class Account extends StatefulWidget {
 }
 
 class _AccountState extends State<Account> {
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  late User user;
   AccountController controller = Get.find<AccountController>();
   AuthController authController = Get.find<AuthController>();
+
+  @override
+  void initState() {
+    super.initState();
+    _getSignedInUser();
+  }
+
+  _getSignedInUser() async {
+    user = _auth.currentUser!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +46,13 @@ class _AccountState extends State<Account> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              GestureDetector(
+                child: Icon(Icons.logout),
+                onTap: () {
+                  _auth.signOut();
+                  Get.off(LoginPage());
+                },
+              ),
               SizedBox(
                 height: 10,
               ),

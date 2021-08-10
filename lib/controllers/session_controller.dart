@@ -1,3 +1,5 @@
+import 'package:bid_palour/models/bid_model.dart';
+
 class SessionController {
   getLatestSession() {}
 
@@ -5,7 +7,9 @@ class SessionController {
 
   addUserToSession(String email, String sessionId) {}
 
-  createNewSession(String prevSessionID) {}
+  createNewSession(String prevSessionID, BidModel bid) {}
 
   setSessionStatus(String sessionId, String status) {}
+
+  void changeSessionStatus(String sessionID) {}
 }
