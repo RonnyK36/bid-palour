@@ -109,13 +109,14 @@ class _PhoneVerificationState extends State<PhoneVerification> {
       }) /*Container(
         // color: Colors.green,
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: ListView(
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Spacer(),
+              SizedBox(height: 40),
               Text(
                 'Create an account',
                 style: kTitleTextStyle,
+                textAlign: TextAlign.center,
               ),
               SizedBox(height: 30),
               Text(
